@@ -5,6 +5,8 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "lbh-frontend": "^3.3.2",
+    "node-sass": "^4.14.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-hook-form": "7.0.0",
