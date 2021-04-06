@@ -1,1 +1,12 @@
 @import "node_modules/lbh-frontend/lbh/all";
+
+body{
+  text-align: center;
+}
+
+form{
+  width: 50%;
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 50px;
+}
