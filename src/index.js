@@ -13,7 +13,7 @@ export default function App() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset class="govuk-fieldset lbh-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-          <h1 class="govuk-fieldset__heading">Weekly Retro</h1>
+          <h1 class="govuk-fieldset__heading">Weekly Retro<span class="required-marker">*</span></h1>
         </legend>
         <hr></hr>
         
@@ -23,10 +23,10 @@ export default function App() {
             role="group"
             aria-describedby="date-errors-error"
           >
-            <legend class="govuk-fieldset__legend">Today's Date</legend>
+            <legend class="govuk-fieldset__legend">Today's Date<span class="required-marker">*</span></legend>
             {(errors.day || errors.month || errors.year) && (
               <span id="date-errors-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> This field is required
+                <span class="govuk-visually-hidden">Error:</span> Please enter a valid date
               </span>
             )}
             <div class="govuk-date-input lbh-date-input" id="date-errors">
@@ -46,7 +46,7 @@ export default function App() {
                     pattern="[0-9]*"
                     inputmode="numeric"
                     aria-invalid={errors.day ? "true" : "false"}
-                    {...register("day", {required: true})}
+                    {...register("day", {required: true, max: 31, min: 1})}
                   />
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function App() {
                     pattern="[0-9]*"
                     inputmode="numeric"
                     aria-invalid={errors.month ? "true" : "false"}
-                    {...register("month", {required: true})}
+                    {...register("month", {required: true, max: 12, min: 1})}
                   />
                 </div>
               </div>
@@ -99,11 +99,11 @@ export default function App() {
         </label>
         <textarea id="summary" class="govuk-textarea lbh-textarea" {...register("Summary of learning over the week")} />
         <label class="govuk-label lbh-label" for="enjoyed">
-          What did you enjoy most about this week?
+          What did you enjoy most about this week?<span class="required-marker">*</span>
         </label>
         <textarea id="enjoyed" class="govuk-textarea lbh-textarea" {...register("What did you enjoy most about this week?", {required: true})} />
-        <label class="govuk-label lbh-label" for="learned">
-          Taking into account everything you've done since your last reflection, have you learned...
+        <label class="govuk-label lbh-label" for="learned" >
+          Taking into account everything you've done since your last reflection, have you learned...<span class="required-marker">*</span>
         </label>
         <select id="learned" class="govuk-select lbh-select" {...register("Taking into account everything you've done since your last reflection, have you learned...", { required: true })}>
           <option value="A lot">A lot</option>
@@ -114,27 +114,27 @@ export default function App() {
         </label>
         <textarea id="context" class="govuk-textarea lbh-textarea" {...register("Feel free to add some context here...")} />
         <label class="govuk-label lbh-label" for="progress">
-          How would you rate your progress this week?
+          How would you rate your progress this week?<span class="required-marker">*</span>
         </label>
-        <input id="progress" class="govuk-input lbh-input" type="number" placeholder="How would you rate your progress this week?" {...register("How would you rate your progress this week?", {required: true, max: 10, min: 1})} />
+        <input id="progress" class="govuk-input lbh-input" type="number" {...register("How would you rate your progress this week?", {required: true, max: 10, min: 1})} />
         <label class="govuk-label lbh-label" for="progress-reason">
-          Weekly Progress Reason
+          Weekly Progress Reason<span class="required-marker">*</span>
         </label>
         <textarea id="progress-reason" class="govuk-textarea lbh-textarea" {...register} />
         <label class="govuk-label lbh-label" for="mood">
-          How are you feeling right now?
+          How are you feeling right now?<span class="required-marker">*</span>
         </label>
-        <input id="mood" class="govuk-input lbh-input" type="number" placeholder="How are you feeling right now?" {...register("How are you feeling right now?", {required: true, max: 10, min: 1})} />
+        <input id="mood" class="govuk-input lbh-input" type="number" {...register("How are you feeling right now?", {required: true, max: 10, min: 1})} />
         <label class="govuk-label lbh-label" for="mood-reason">
-          What makes you feel this way? 
+          What makes you feel this way?<span class="required-marker">*</span>
         </label>
         <textarea id="mood-reason" class="govuk-textarea lbh-textarea" {...register("What makes you feel this way?", {required: true})} />
         <label class="govuk-label lbh-label" for="improve">
-          What do you think you could improve for next week?
+          What do you think you could improve for next week?<span class="required-marker">*</span>
         </label>
-        <input id="improve" class="govuk-input lbh-input" type="text" placeholder="What do you think you could improve for next week?" {...register("What do you think you could improve for next week?", {required: true})} />
+        <input id="improve" class="govuk-input lbh-input" type="text" {...register("What do you think you could improve for next week?", {required: true})} />
         <label class="govuk-label lbh-label" for="star">
-          Retro Diary Entry - STAR
+          Retro Diary Entry - STAR<span class="required-marker">*</span>
         </label>
         <span id="more-detail-hint" class="govuk-hint lbh-hint">
           * Situation – explain the situation put it into context 
