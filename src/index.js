@@ -101,7 +101,26 @@ export default function App() {
         <label class="govuk-label lbh-label" for="enjoyed">
           What did you enjoy most about this week?<span class="required-marker">*</span>
         </label>
-        <textarea id="enjoyed" class="govuk-textarea lbh-textarea" {...register("What did you enjoy most about this week?", {required: true})} />
+        
+        <div class={`govuk-form-group govuk-form-group${errors.enjoyed ? "--error" : ""} lbh-form-group`}>
+          <label class="govuk-label lbh-label" for="enjoyed">
+            What did you enjoy most about this week?<span class="required-marker">*</span>
+          </label>
+          {errors.enjoyed && (
+              <span id="enjoyed-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> This field is required
+              </span>
+            )}
+          <textarea
+            class={`govuk-textarea govuk-textarea${errors.enjoyed ? "--error" : ""} lbh-textarea`}
+            id="enjoyed"
+            name="enjoyed"
+            rows="5"
+            aria-describedby="enjoyed-error"
+            {...register("enjoyed", {required: true})}
+          ></textarea>
+        </div>
+
         <label class="govuk-label lbh-label" for="learned" >
           Taking into account everything you've done since your last reflection, have you learned...<span class="required-marker">*</span>
         </label>
@@ -136,7 +155,7 @@ export default function App() {
         <label class="govuk-label lbh-label" for="star">
           Retro Diary Entry - STAR<span class="required-marker">*</span>
         </label>
-        <span id="more-detail-hint" class="govuk-hint lbh-hint">
+        <span id="learningSummary-hint" class="govuk-hint lbh-hint">
           * Situation – explain the situation put it into context 
           * Task – explain about the task you were working on 
           * Action – what was your action, how did you contribute 
