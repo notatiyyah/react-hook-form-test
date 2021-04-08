@@ -152,36 +152,79 @@ export default function App() {
           How would you rate your progress this week?<span class="required-marker">*</span>
         </label>
         <input id="progress" class="govuk-input lbh-input" type="number" {...register("How would you rate your progress this week?", {required: true, max: 10, min: 1})} />
-        <label class="govuk-label lbh-label" for="progress-reason">
-          Weekly Progress Reason<span class="required-marker">*</span>
-        </label>
-        <textarea id="progress-reason" class="govuk-textarea lbh-textarea" {...register} />
+        
+        <div class={`govuk-form-group govuk-form-group${errors.progressReason ? "--error" : ""} lbh-form-group`}>
+          <label class="govuk-label lbh-label" for="progressReason">
+            Weekly Progress Reason<span class="required-marker">*</span>
+          </label>
+          {errors.progressReason && (
+              <span id="progressReason-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> This field is required
+              </span>
+            )}
+          <textarea
+            class={`govuk-textarea govuk-textarea${errors.progressReason ? "--error" : ""} lbh-textarea`}
+            id="progressReason"
+            name="progressReason"
+            rows="5"
+            aria-describedby="progressReason-error"
+            {...register("progressReason", {required: true})}
+          ></textarea>
+        </div>
 
         <label class="govuk-label lbh-label" for="mood">
           How are you feeling right now?<span class="required-marker">*</span>
         </label>
         <input id="mood" class="govuk-input lbh-input" type="number" {...register("How are you feeling right now?", {required: true, max: 10, min: 1})} />
         
-        <label class="govuk-label lbh-label" for="mood-reason">
+        <div class={`govuk-form-group govuk-form-group${errors.MoodReason ? "--error" : ""} lbh-form-group`}>
+          <label class="govuk-label lbh-label" for="MoodReason">
           What makes you feel this way?<span class="required-marker">*</span>
-        </label>
-        <textarea id="mood-reason" class="govuk-textarea lbh-textarea" {...register("What makes you feel this way?", {required: true})} />
+          </label>
+          {errors.MoodReason && (
+              <span id="MoodReason-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> This field is required
+              </span>
+            )}
+          <textarea
+            class={`govuk-textarea govuk-textarea${errors.MoodReason ? "--error" : ""} lbh-textarea`}
+            id="MoodReason"
+            name="MoodReason"
+            rows="5"
+            aria-describedby="MoodReason-error"
+            {...register("MoodReason", {required: true})}
+          ></textarea>
+        </div>
         
         <label class="govuk-label lbh-label" for="improve">
           What do you think you could improve for next week?<span class="required-marker">*</span>
         </label>
         <input id="improve" class="govuk-input lbh-input" type="text" {...register("What do you think you could improve for next week?", {required: true})} />
         
-        <label class="govuk-label lbh-label" for="star">
-          Retro Diary Entry - STAR<span class="required-marker">*</span>
-        </label>
-        <span id="learningSummary-hint" class="govuk-hint lbh-hint">
-          * Situation – explain the situation put it into context 
-          * Task – explain about the task you were working on 
-          * Action – what was your action, how did you contribute 
-          * Result – what was the result, it may be an ongoing task but reflect on the outcomes so far
-        </span>
-        <textarea id="star" class="govuk-textarea lbh-textarea" {...register("Retro Diary Entry - STAR", {required: true})} />
+        <div class={`govuk-form-group govuk-form-group${errors.star ? "--error" : ""} lbh-form-group`}>
+          <label class="govuk-label lbh-label" for="star">
+            Retro Diary Entry - STAR<span class="required-marker">*</span>
+          </label>
+          <span id="more-detail-hint" class="govuk-hint lbh-hint">
+            * Situation – explain the situation put it into context<br/>
+            * Task – explain about the task you were working on<br/>
+            * Action – what was your action, how did you contribute<br/>
+            * Result – what was the result, it may be an ongoing task but reflect on the outcomes so far
+          </span>
+          {errors.star && (
+              <span id="star-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> This field is required
+              </span>
+            )}
+          <textarea
+            class={`govuk-textarea govuk-textarea${errors.star ? "--error" : ""} lbh-textarea`}
+            id="star"
+            name="star"
+            rows="5"
+            aria-describedby="star-error"
+            {...register("star", {required: true})}
+          ></textarea>
+        </div>
         
         <input class="govuk-button lbh-button" type="submit" />
       </fieldset>
