@@ -187,7 +187,7 @@ export default function App() {
           </label>
           {errors.progress && (
             <span id="input-with-error-message-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> This field is required
+              <span class="govuk-visually-hidden">Error:</span> Please enter a number between 1 and 10
             </span>
           )}        
           <input
@@ -225,7 +225,7 @@ export default function App() {
           </label>
           {errors.mood && (
             <span id="mood-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> This field is required
+              <span class="govuk-visually-hidden">Error:</span> Please enter a number between 1 and 10
             </span>
           )}
           <input
