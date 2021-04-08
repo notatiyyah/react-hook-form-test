@@ -127,13 +127,46 @@ export default function App() {
           ></textarea>
         </div>
 
-        <label class="govuk-label lbh-label" for="learned" >
-          Taking into account everything you've done since your last reflection, have you learned...<span class="required-marker">*</span>
-        </label>
-        <select id="learned" class="govuk-select lbh-select" {...register("Taking into account everything you've done since your last reflection, have you learned...", { required: true })}>
-          <option value="A lot">A lot</option>
-          <option value=" A little"> A little</option>
-        </select>
+        <div class={`govuk-form-group govuk-form-group${errors.learned ? "--error" : ""} lbh-form-group`}>
+          <fieldset class="govuk-fieldset" aria-describedby="learned-error">
+            <legend class="govuk-fieldset__legend">
+              Taking into account everything you've done since your last reflection, have you learned...<span class="required-marker">*</span>
+            </legend>
+            {errors.learned && (
+              <span id="learned-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> This field is required
+              </span>
+            )}
+            <div class="govuk-radios lbh-radios">
+              <div class="govuk-radios__item">
+                <input
+                  class="govuk-radios__input"
+                  id="learned"
+                  name="learned"
+                  type="radio"
+                  value="A Lot"
+                  {...register("learned", { required: true })}
+                />
+                <label class="govuk-label govuk-radios__label" for="learned">
+                  A Lot
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input
+                  class="govuk-radios__input"
+                  id="learned-2"
+                  name="learned"
+                  type="radio"
+                  value="A Little"
+                  {...register("learned", { required: true })}
+                />
+                <label class="govuk-label govuk-radios__label" for="learned-2">
+                  A Little
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
         <div class="govuk-form-group lbh-form-group">
           <label class="govuk-label lbh-label" for="context">
@@ -148,7 +181,7 @@ export default function App() {
           ></textarea>
         </div>
 
-        <div class={`govuk-form-group govuk-form-group${errors.ni ? "--error" : ""} lbh-form-group`}>
+        <div class={`govuk-form-group govuk-form-group${errors.progress ? "--error" : ""} lbh-form-group`}>
           <label class="govuk-label lbh-label" for="input-with-error-message">
             How would you rate your progress this week?<span class="required-marker">*</span>
           </label>
@@ -158,7 +191,7 @@ export default function App() {
             </span>
           )}        
           <input
-            class={`govuk-input lbh-input govuk-input${errors.ni ? "--error" : ""}`}
+            class={`govuk-input lbh-input govuk-input${errors.progress ? "--error" : ""}`}
             id="input-with-error-message"
             name="progress"
             type="text"
