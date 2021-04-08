@@ -14,10 +14,10 @@ export default function App() {
       <fieldset class="govuk-fieldset lbh-fieldset">
         
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-          <h1 class="govuk-fieldset__heading">Weekly Retro<span class="required-marker">*</span></h1>
+          <h1 class="govuk-fieldset__heading">Weekly Retro</h1>
         </legend>
         <hr></hr>
-        
+        <span id="red-hint" class="govuk-hint lbh-hint">*Required</span>
         <div class={`govuk-form-group govuk-form-group${(errors.day || errors.month || errors.year) ? "--error" : ""} lbh-form-group`}>
           <fieldset
             class="govuk-fieldset"
