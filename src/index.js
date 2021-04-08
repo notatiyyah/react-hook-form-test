@@ -12,6 +12,7 @@ export default function App() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset class="govuk-fieldset lbh-fieldset">
+        
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
           <h1 class="govuk-fieldset__heading">Weekly Retro<span class="required-marker">*</span></h1>
         </legend>
@@ -94,13 +95,18 @@ export default function App() {
           </fieldset>
         </div>
 
-        <label class="govuk-label lbh-label" for="summary">
-          Summary of learning over the week
-        </label>
-        <textarea id="summary" class="govuk-textarea lbh-textarea" {...register("Summary of learning over the week")} />
-        <label class="govuk-label lbh-label" for="enjoyed">
-          What did you enjoy most about this week?<span class="required-marker">*</span>
-        </label>
+        <div class="govuk-form-group lbh-form-group">
+          <label class="govuk-label lbh-label" for="learningSummary">
+            Summary of learning over the week
+          </label>
+          <textarea
+            class="govuk-textarea lbh-textarea"
+            id="learningSummary"
+            name="learningSummary"
+            rows="5"
+            aria-describedby="learningSummary-hint"
+          ></textarea>
+        </div>
         
         <div class={`govuk-form-group govuk-form-group${errors.enjoyed ? "--error" : ""} lbh-form-group`}>
           <label class="govuk-label lbh-label" for="enjoyed">
@@ -128,10 +134,20 @@ export default function App() {
           <option value="A lot">A lot</option>
           <option value=" A little"> A little</option>
         </select>
-        <label class="govuk-label lbh-label" for="context">
-          Feel free to add some context here...
-        </label>
-        <textarea id="context" class="govuk-textarea lbh-textarea" {...register("Feel free to add some context here...")} />
+
+        <div class="govuk-form-group lbh-form-group">
+          <label class="govuk-label lbh-label" for="context">
+            Feel free to add some context here...
+          </label>
+          <textarea
+            class="govuk-textarea lbh-textarea"
+            id="context"
+            name="context"
+            rows="5"
+            aria-describedby="context-hint"
+          ></textarea>
+        </div>
+
         <label class="govuk-label lbh-label" for="progress">
           How would you rate your progress this week?<span class="required-marker">*</span>
         </label>
@@ -140,18 +156,22 @@ export default function App() {
           Weekly Progress Reason<span class="required-marker">*</span>
         </label>
         <textarea id="progress-reason" class="govuk-textarea lbh-textarea" {...register} />
+
         <label class="govuk-label lbh-label" for="mood">
           How are you feeling right now?<span class="required-marker">*</span>
         </label>
         <input id="mood" class="govuk-input lbh-input" type="number" {...register("How are you feeling right now?", {required: true, max: 10, min: 1})} />
+        
         <label class="govuk-label lbh-label" for="mood-reason">
           What makes you feel this way?<span class="required-marker">*</span>
         </label>
         <textarea id="mood-reason" class="govuk-textarea lbh-textarea" {...register("What makes you feel this way?", {required: true})} />
+        
         <label class="govuk-label lbh-label" for="improve">
           What do you think you could improve for next week?<span class="required-marker">*</span>
         </label>
         <input id="improve" class="govuk-input lbh-input" type="text" {...register("What do you think you could improve for next week?", {required: true})} />
+        
         <label class="govuk-label lbh-label" for="star">
           Retro Diary Entry - STAR<span class="required-marker">*</span>
         </label>
@@ -162,6 +182,7 @@ export default function App() {
           * Result – what was the result, it may be an ongoing task but reflect on the outcomes so far
         </span>
         <textarea id="star" class="govuk-textarea lbh-textarea" {...register("Retro Diary Entry - STAR", {required: true})} />
+        
         <input class="govuk-button lbh-button" type="submit" />
       </fieldset>
     </form>
