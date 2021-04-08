@@ -16,10 +16,84 @@ export default function App() {
           <h1 class="govuk-fieldset__heading">Weekly Retro</h1>
         </legend>
         <hr></hr>
-        <label class="govuk-label lbh-label" for="summary">
-          Today's Date
-        </label>
-        <input type="date" placeholder="Today's date" {...register("Date", {required: true})} />   
+        
+        <div class={`govuk-form-group govuk-form-group${(errors.day || errors.month || errors.year) ? "--error" : ""} lbh-form-group`}>
+          <fieldset
+            class="govuk-fieldset"
+            role="group"
+            aria-describedby="date-errors-error"
+          >
+            <legend class="govuk-fieldset__legend">Today's Date</legend>
+            {(errors.day || errors.month || errors.year) && (
+              <span id="date-errors-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> This field is required
+              </span>
+            )}
+            <div class="govuk-date-input lbh-date-input" id="date-errors">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label
+                    class="govuk-label govuk-date-input__label"
+                    for="date-errors-day"
+                  >
+                    Day
+                  </label>
+                  <input
+                    class={`govuk-input govuk-date-input__input govuk-input--width-2 govuk-input${errors.day ? "--error" : ""}`}
+                    id="date-errors-day"
+                    name="day"
+                    type="text"
+                    pattern="[0-9]*"
+                    inputmode="numeric"
+                    aria-invalid={errors.day ? "true" : "false"}
+                    {...register("day", {required: true})}
+                  />
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label
+                    class="govuk-label govuk-date-input__label"
+                    for="date-errors-month"
+                  >
+                    Month
+                  </label>
+                  <input
+                    class={`govuk-input govuk-date-input__input govuk-input--width-2 govuk-input${errors.month ? "--error" : ""}`}
+                    id="date-errors-month"
+                    name="month"
+                    type="text"
+                    pattern="[0-9]*"
+                    inputmode="numeric"
+                    aria-invalid={errors.month ? "true" : "false"}
+                    {...register("month", {required: true})}
+                  />
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label
+                    class="govuk-label govuk-date-input__label"
+                    for="date-errors-year"
+                  >
+                    Year
+                  </label>
+                  <input
+                    class={`govuk-input govuk-date-input__input govuk-input--width-4 govuk-input${errors.year ? "--error" : ""}`}
+                    id="date-errors-year"
+                    name="year"
+                    type="text"
+                    pattern="[0-9]*"
+                    inputmode="numeric"
+                    aria-invalid={errors.year ? "true" : "false"}
+                    {...register("year", {required: true})}
+                  />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
         <label class="govuk-label lbh-label" for="summary">
           Summary of learning over the week
         </label>
