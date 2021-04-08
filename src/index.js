@@ -148,10 +148,24 @@ export default function App() {
           ></textarea>
         </div>
 
-        <label class="govuk-label lbh-label" for="progress">
-          How would you rate your progress this week?<span class="required-marker">*</span>
-        </label>
-        <input id="progress" class="govuk-input lbh-input" type="number" {...register("How would you rate your progress this week?", {required: true, max: 10, min: 1})} />
+        <div class={`govuk-form-group govuk-form-group${errors.ni ? "--error" : ""} lbh-form-group`}>
+          <label class="govuk-label lbh-label" for="input-with-error-message">
+            How would you rate your progress this week?<span class="required-marker">*</span>
+          </label>
+          {errors.progress && (
+            <span id="input-with-error-message-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> This field is required
+            </span>
+          )}        
+          <input
+            class={`govuk-input lbh-input govuk-input${errors.ni ? "--error" : ""}`}
+            id="input-with-error-message"
+            name="progress"
+            type="text"
+            aria-describedby="input-with-error-message-error"
+            {...register("progress", {required: true, max: 10, min: 1})}
+          />
+        </div>
         
         <div class={`govuk-form-group govuk-form-group${errors.progressReason ? "--error" : ""} lbh-form-group`}>
           <label class="govuk-label lbh-label" for="progressReason">
@@ -172,10 +186,24 @@ export default function App() {
           ></textarea>
         </div>
 
-        <label class="govuk-label lbh-label" for="mood">
-          How are you feeling right now?<span class="required-marker">*</span>
-        </label>
-        <input id="mood" class="govuk-input lbh-input" type="number" {...register("How are you feeling right now?", {required: true, max: 10, min: 1})} />
+        <div class={`govuk-form-group govuk-form-group${errors.mood ? "--error" : ""} lbh-form-group`}>
+          <label class="govuk-label lbh-label" for="input-with-error-message">
+            How are you feeling right now?<span class="required-marker">*</span>
+          </label>
+          {errors.mood && (
+            <span id="input-with-error-message-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> This field is required
+            </span>
+          )}
+          <input
+            class={`govuk-input lbh-input govuk-input${errors.mood ? "--error" : ""}`}
+            id="input-with-error-message"
+            name="mood"
+            type="number"
+            aria-describedby="input-with-error-message-error"
+            {...register("mood", {required: true, max: 10, min: 1})}
+          />
+        </div>
         
         <div class={`govuk-form-group govuk-form-group${errors.MoodReason ? "--error" : ""} lbh-form-group`}>
           <label class="govuk-label lbh-label" for="MoodReason">
@@ -195,11 +223,25 @@ export default function App() {
             {...register("MoodReason", {required: true})}
           ></textarea>
         </div>
-        
-        <label class="govuk-label lbh-label" for="improve">
-          What do you think you could improve for next week?<span class="required-marker">*</span>
-        </label>
-        <input id="improve" class="govuk-input lbh-input" type="text" {...register("What do you think you could improve for next week?", {required: true})} />
+
+        <div class={`govuk-form-group govuk-form-group${errors.improve ? "--error" : ""} lbh-form-group`}>
+          <label class="govuk-label lbh-label" for="input-with-error-message">
+            What do you think you could improve for next week?<span class="required-marker">*</span>
+          </label>
+          {errors.improve && (
+            <span id="input-with-error-message-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> This field is required
+            </span>
+          )}
+          <input
+            class={`govuk-input lbh-input govuk-input${errors.MoodReason ? "--error" : ""}`}
+            id="input-with-error-message"
+            name="improve"
+            type="text"
+            aria-describedby="input-with-error-message-error"
+            {...register("improve", {required: true})}
+          />
+        </div>
         
         <div class={`govuk-form-group govuk-form-group${errors.star ? "--error" : ""} lbh-form-group`}>
           <label class="govuk-label lbh-label" for="star">
