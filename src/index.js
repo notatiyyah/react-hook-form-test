@@ -11,6 +11,8 @@ export default function App() {
   
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+        <input type="text" placeholder="ni" {...register("ni", {required: true, maxLength: 9, pattern: /^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]\s*$/i})} />
+        
         <div class="govuk-form-group govuk-form-group--error lbh-form-group">
           <label class="govuk-label lbh-label" for="input-with-error-message">
             National Insurance number
